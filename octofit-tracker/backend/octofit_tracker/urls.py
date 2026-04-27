@@ -33,18 +33,29 @@ router.register(r'leaderboard', LeaderboardViewSet)
 
 @api_view(['GET'])
 def api_root(request, format=None):
+    import os
+    codespace_name = os.environ.get('CODESPACE_NAME')
+    if codespace_name:
+        base_url = f"https://{codespace_name}-8000.app.github.dev/api/"
+    else:
+        # fallback to request.build_absolute_uri for localhost/dev
+        base_url = request.build_absolute_uri('/')
+        if not base_url.endswith('/'):
+            base_url += '/'
+        if not base_url.endswith('/api/'):
+            base_url += 'api/'
     return Response({
-        'users': request.build_absolute_uri('users/'),
-        'teams': request.build_absolute_uri('teams/'),
-        'activities': request.build_absolute_uri('activities/'),
-        'workouts': request.build_absolute_uri('workouts/'),
-        'leaderboard': request.build_absolute_uri('leaderboard/'),
+        'users': base_url + 'users/',
+        'teams': base_url + 'teams/',
+        'activities': base_url + 'activities/',
+        'workouts': base_url + 'workouts/',
+        'leaderboard': base_url + 'leaderboard/',
     })
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', api_root, name='api-root'),
-    path('', include(router.urls)),
+    path('api/', api_root, name='api-root'),
+    path('api/', include(router.urls)),
     path('schema/', get_schema_view(title="Octofit API"), name='openapi-schema'),
-    path('docs/', include_docs_urls(title='Octofit API')),
+    # path('docs/', include_docs_urls(title='Octofit API')),
 ]
