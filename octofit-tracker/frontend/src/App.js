@@ -56,7 +56,10 @@ function App() {
       <div className="App">
         <nav className="navbar navbar-expand-lg navbar-dark mb-4">
           <div className="container-fluid">
-            <Link className="navbar-brand" to="/">🏋️ Octofit Tracker</Link>
+            <Link className="navbar-brand" to="/">
+              <img src="/octofit-logo.png" alt="Octofit Logo" className="navbar-logo" />
+              <span>Octofit Tracker</span>
+            </Link>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
               <span className="navbar-toggler-icon"></span>
             </button>
