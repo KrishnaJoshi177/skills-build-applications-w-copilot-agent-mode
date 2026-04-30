@@ -5,6 +5,7 @@ const Teams = () => {
   const [teams, setTeams] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  // Codespace API endpoint for teams: -8000.app.github.dev/api/teams
   const endpoint = getEndpoint('teams');
 
   const fetchTeams = () => {

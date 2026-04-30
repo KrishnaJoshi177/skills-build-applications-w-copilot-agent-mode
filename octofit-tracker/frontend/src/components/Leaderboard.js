@@ -5,6 +5,7 @@ const Leaderboard = () => {
   const [leaderboard, setLeaderboard] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  // Codespace API endpoint for leaderboard: -8000.app.github.dev/api/leaderboard
   const endpoint = getEndpoint('leaderboard');
 
   const fetchLeaderboard = () => {

@@ -5,6 +5,7 @@ const Activities = () => {
   const [activities, setActivities] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  // Codespace API endpoint for activities: -8000.app.github.dev/api/activities
   const endpoint = getEndpoint('activities');
 
   const fetchActivities = () => {

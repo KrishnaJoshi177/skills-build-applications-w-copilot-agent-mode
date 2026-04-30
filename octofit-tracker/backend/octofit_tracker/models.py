@@ -20,13 +20,14 @@ class Team(models.Model):
 
 # Activity model
 class Activity(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_name = models.CharField(max_length=100, blank=True)
+    user_email = models.EmailField(blank=True)
     activity_type = models.CharField(max_length=50)
     duration = models.PositiveIntegerField(help_text="Duration in minutes")
     date = models.DateField()
 
     def __str__(self):
-        return f"{self.user.name} - {self.activity_type}"
+        return f"{self.user_name} - {self.activity_type}"
 
 # Workout model
 class Workout(models.Model):
@@ -39,9 +40,10 @@ class Workout(models.Model):
 
 # Leaderboard model
 class Leaderboard(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_name = models.CharField(max_length=100)
+    user_email = models.EmailField(blank=True)
     points = models.PositiveIntegerField(default=0)
     rank = models.PositiveIntegerField(default=0)
 
     def __str__(self):
-        return f"{self.user.name} - {self.points} pts"
+        return f"{self.user_name} - {self.points} pts"

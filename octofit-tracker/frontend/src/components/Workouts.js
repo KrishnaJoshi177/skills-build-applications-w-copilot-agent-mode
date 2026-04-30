@@ -5,6 +5,7 @@ const Workouts = () => {
   const [workouts, setWorkouts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  // Codespace API endpoint for workouts: -8000.app.github.dev/api/workouts
   const endpoint = getEndpoint('workouts');
 
   const fetchWorkouts = () => {

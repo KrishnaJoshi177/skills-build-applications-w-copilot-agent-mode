@@ -5,6 +5,7 @@ const Users = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  // Codespace API endpoint for users: -8000.app.github.dev/api/users
   const endpoint = getEndpoint('users');
 
   const fetchUsers = () => {
